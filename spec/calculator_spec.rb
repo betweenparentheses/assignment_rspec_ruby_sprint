@@ -56,6 +56,7 @@ describe Calculator do
   end
   
   context 'with stringify input set as true' do
+    let(:c_stringified) { Calculator.new(true) }
     
   end
   
