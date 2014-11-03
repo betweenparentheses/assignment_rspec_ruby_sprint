@@ -60,17 +60,78 @@ describe Calculator do
     
   end
   
+  # The divide method properly divides numbers, raises an ArgumentError 
+  # if the second argument is negative, returns an integer if there is 
+  # no remainder and a float if there is.
   describe '#divide' do
     
+    it 'divides the first argument by the second argument' do
+      expect(c.divide(10, 2)).to eq(5)
+    end
+
+    it 'returns an integer if there is no remainder' do
+      expect(c.divide(10, 2)).to be_kind_of(Integer)
+    end
+    
+    it 'returns a float if there is a remainder' do
+      expect(c.divide(10, 3)).to be_kind_of(FixNum)
+    end
+    
+    it 'raises an ArgumentError if the second argument is negative' do
+      expect(c.divide(8,-3)).to raise_error(ArgumentError)
+    end
   end
   
+  # pow method properly raises numbers to their power, including negative and decimal powers
   describe '#pow' do
     
-  end
-  
-  describe '#sqrt' do
+    it 'raises the first argument to the power of the second argument' do
+      expect(c.pow(2,3)).to eq(8)
+    end
+    
+    it 'returns 1 if the power is 0' do
+      expect(c.pow(25,0)).to eq(0)
+    end
+    
+    it 'handles negative exponents' do
+      expect(c.pow(2, -2)).to eq(0.25)
+    end
+    
+    it 'handles decimal powers' do
+      expect(c.pow(9, .5)).to eq(3.0)
+    end
     
   end
+  
+  #The sqrt method properly determines square roots for positive numbers,
+  # raises errors for negative inputs, returns integers for round roots 
+  # or 2-digit decimals for non-round roots.
+  describe '#sqrt' do
+    
+    it 'determines square roots for positive numbers' do
+      expect(c.sqrt(16)).to eq(4)
+    end
+    
+    it 'returns integers for round roots' do
+      expect(c.sqrt(9)).to be_kind_of(Integer)
+    end
+    
+    it 'raises an error for negative inputs' do
+      expect(c.sqrt(-1)).to raise_error
+    end
+    
+    it 'returns a decimal for non-round roots' do 
+      expect(c.sqrt(3)).to be_kind_of(FixNum)
+    end
+    
+    it 'returns 2-digit decimals for non-round roots' do
+      root = c.sqrt(3)
+      decimal_places = root.to_s.split('.').last.size
+      expect(decimal_places).to eq(2)
+    end
+    
+  end
+  
   
   describe '#memory=' do
     
