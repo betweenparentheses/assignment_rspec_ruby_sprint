@@ -2,12 +2,6 @@ require 'bow'
 
 describe Bow do
   let(:b) {Bow.new}
-  
-  #A Bow's arrow count is readable
-  #A Bow starts with 10 arrows by default
-  #A Bow created with a specified number of arrows starts with that number of arrows
-  #useing a Bow reduces arrows by 1
-  #useing a Bow with 0 arrows throws an error
 
   describe '#initialize' do
     it 'defaults to starting with 10 arrows' do
