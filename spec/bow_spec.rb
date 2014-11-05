@@ -1,4 +1,4 @@
-require 'bow'
+require 'weapons/bow'
 
 describe Bow do
   let(:b) {Bow.new}
